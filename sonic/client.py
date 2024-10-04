@@ -112,7 +112,7 @@ def _parse_protocol_version(text):
     Returns:
         str -- protocol version.
     """
-    matches = re.findall("protocol\((\w+)\)", text)
+    matches = re.findall(r"protocol\((\w+)\)", text)
     if not matches:
         raise ValueError("{} doesn't contain protocol(NUMBER)".format(text))
     return matches[0]
@@ -131,7 +131,7 @@ def _parse_buffer_size(text):
         str -- buffering.
     """
 
-    matches = re.findall("buffer\((\w+)\)", text)
+    matches = re.findall(r"buffer\((\w+)\)", text)
     if not matches:
         raise ValueError("{} doesn't contain buffer(NUMBER)".format(text))
     return matches[0]
@@ -150,7 +150,7 @@ def _get_async_response_id(text):
         str -- async response id
     """
     text = text.strip()
-    matches = re.findall("PENDING (\w+)", text)
+    matches = re.findall(r"PENDING (\w+)", text)
     if not matches:
         raise ValueError("{} doesn't contain async response id".format(text))
     return matches[0]
